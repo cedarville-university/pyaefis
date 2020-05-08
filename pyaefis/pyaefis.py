@@ -1,8 +1,10 @@
+## Copyright 2020 Cedarville University
+
 import requests
 from requests.auth import HTTPBasicAuth
 
 
-class PyAefis:
+class Pyaefis:
 
     def __init__(self, username=None, password=None):
         self.username = username
