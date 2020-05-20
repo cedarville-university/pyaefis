@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyaefis", # Replace with your own username
-    version="0.0.1.5",
+    version="0.0.1.6",
     author="Cedarville University",
     author_email="techhelp@cedarville.edu",
     description="Library for interacting with AEFIS",
