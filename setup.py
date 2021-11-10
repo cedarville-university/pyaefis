@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pyaefis", # Replace with your own username
+    name="pyaefis",
     version="0.0.1.7",
     author="Cedarville University",
     author_email="techhelp@cedarville.edu",
@@ -15,7 +15,7 @@ setuptools.setup(
     packages=['pyaefis'],
     install_requires=[
           'requests',
-          'urllib'
+          'urllib3'
       ],
     classifiers=[
         "Programming Language :: Python :: 3",
