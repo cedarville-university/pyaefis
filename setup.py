@@ -15,6 +15,7 @@ setuptools.setup(
     packages=['pyaefis'],
     install_requires=[
           'requests',
+          'urllib'
       ],
     classifiers=[
         "Programming Language :: Python :: 3",
