@@ -85,7 +85,7 @@ class Pyaefis:
 
         try:
             response = requests.get(
-                url="https://{self.hostname}/api/programs",
+                url=f"https://{self.hostname}/api/programs",
                 params={
                     "start": start,
                 },
@@ -132,7 +132,7 @@ class Pyaefis:
     def getaefiscoursesections(self, sectionlist, keywords=None, start=0):
         try:
             response = requests.get(
-                url="https://{self.hostname}/api/coursesections",
+                url=f"https://{self.hostname}/api/coursesections",
                 params={
                     "start": start,
                     "keywords": keywords,
