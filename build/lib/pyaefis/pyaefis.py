@@ -2,23 +2,26 @@
 
 import requests
 from requests.auth import HTTPBasicAuth
+from urllib.parse import urlparse
 
 
 class Pyaefis:
 
-    def __init__(self, username=None, password=None):
+    def __init__(self, username=None, password=None, hostname=None):
         self.username = username
         self.password = password
+        self.hostname = urlparse(hostname).netloc
 
-    def getaefiscourses(self, courselist, start=0):
+    def getaefiscourses(self, courselist, keywords=None, start=0):
         # Get Courses
-        # GET https://cedarville.aefis.net/api/courses
+        # GET https://host/api/courses
 
         try:
             response = requests.get(
-                url="https://cedarville.aefis.net/api/courses",
+                url=f"https://{self.hostname}/api/courses",
                 params={
                     "start": start,
+                    "keywords": keywords
                 },
                 auth=HTTPBasicAuth(self.username, self.password),
                 headers={
@@ -38,7 +41,7 @@ class Pyaefis:
     def getaefiscourse(self, courseid):
         try:
             response = requests.get(
-                url=f"https://cedarville.aefis.net/api/courses/{courseid}",
+                url=f"https://{self.hostname}/api/courses/{courseid}",
                 auth=HTTPBasicAuth(self.username, self.password),
                 headers={
                 },
@@ -52,11 +55,11 @@ class Pyaefis:
 
     def getaefiscourseobjectives(self, courseid, start=0):
         # Get Objectives
-        # GET https://cedarville.aefis.net/api/courses/4561/objectives
+        # GET https://host/api/courses/4561/objectives
 
         try:
             response = requests.get(
-                url=f"https://cedarville.aefis.net/api/courses/{courseid}/objectives",
+                url=f"https://{self.hostname}/api/courses/{courseid}/objectives",
                 auth=HTTPBasicAuth(self.username, self.password),
                 headers={
                 },
@@ -78,11 +81,11 @@ class Pyaefis:
 
     def getaefisprograms(self, programlist, start=0):
         # Get Courses
-        # GET https://cedarville.aefis.net/api/courses
+        # GET https://host/api/courses
 
         try:
             response = requests.get(
-                url="https://cedarville.aefis.net/api/programs",
+                url="https://{self.hostname}/api/programs",
                 params={
                     "start": start,
                 },
@@ -103,11 +106,11 @@ class Pyaefis:
 
     def getaefisprogramobjectives(self, programid, start=0):
         # Get Objectives
-        # GET https://cedarville.aefis.net/api/courses/4561/objectives
+        # GET https://host/api/courses/4561/objectives
 
         try:
             response = requests.get(
-                url=f"https://cedarville.aefis.net/api/programs/{programid}/objectives",
+                url=f"https://{self.hostname}/api/programs/{programid}/objectives",
                 auth=HTTPBasicAuth(self.username, self.password),
                 headers={
                 },
@@ -126,12 +129,13 @@ class Pyaefis:
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
-    def getaefiscoursesections(self, sectionlist, start=0):
+    def getaefiscoursesections(self, sectionlist, keywords=None, start=0):
         try:
             response = requests.get(
-                url="https://cedarville.aefis.net/api/coursesections",
+                url="https://{self.hostname}/api/coursesections",
                 params={
                     "start": start,
+                    "keywords": keywords,
                 },
                 auth=HTTPBasicAuth(self.username, self.password),
                 headers={
@@ -153,7 +157,7 @@ class Pyaefis:
     def aefisgetcoursesection(self, coursesectionid):
         try:
             response = requests.get(
-                url=f"https://cedarville.aefis.net/api/coursesections/{coursesectionid}",
+                url=f"https://{self.hostname}/api/coursesections/{coursesectionid}",
                 auth=HTTPBasicAuth(self.username, self.password),
                 headers={
                 },
