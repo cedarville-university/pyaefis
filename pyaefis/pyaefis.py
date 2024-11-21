@@ -34,7 +34,7 @@ class Pyaefis:
                     start += count
                     courselist.extend(data['DATA'])
                     # return  # debugging
-                    self.getaefiscourses(courselist, start)
+                    self.getaefiscourses(courselist, keywords=keywords, start=start)
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
@@ -53,7 +53,7 @@ class Pyaefis:
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
-    def getaefiscourseobjectives(self, courseid, start=0):
+    def getaefiscourseobjectives(self, courseid):
         # Get Objectives
         # GET https://host/api/courses/4561/objectives
 
@@ -100,11 +100,11 @@ class Pyaefis:
                     start += count
                     programlist.extend(data['DATA'])
                     # return  # debugging
-                    self.getaefisprograms(programlist, start)
+                    self.getaefisprograms(programlist=programlist, start=start)
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
-    def getaefisprogramobjectives(self, programid, start=0):
+    def getaefisprogramobjectives(self, programid):
         # Get Objectives
         # GET https://host/api/courses/4561/objectives
 
@@ -148,7 +148,7 @@ class Pyaefis:
                     start += count
                     sectionlist.extend(data['DATA'])
                     # return  # debugging
-                    self.getaefiscoursesections(sectionlist, start)
+                    self.getaefiscoursesections(sectionlist=sectionlist, keywords=keywords, start=start)
                 else:
                     return sectionlist
         except requests.exceptions.RequestException:
