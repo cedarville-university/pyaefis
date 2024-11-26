@@ -77,7 +77,6 @@ class Pyaefis:
                 # return objectives
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
-            sys.exit(1)
 
     def getaefisprograms(self, programlist, start=0):
         # Get Courses
